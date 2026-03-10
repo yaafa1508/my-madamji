@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== FONTS ===== */
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/assets/fonts/PlayfairDisplay-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("/assets/fonts/Outfit-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 1rem;
+    /* Birthday dark romantic palette */
+    --background: 0.08 0.02 320;
+    --foreground: 0.97 0.01 60;
+    --card: 0.12 0.04 320;
+    --card-foreground: 0.97 0.01 60;
+    --popover: 0.14 0.04 320;
+    --popover-foreground: 0.97 0.01 60;
+    --primary: 0.68 0.22 0;
+    --primary-foreground: 0.99 0 0;
+    --secondary: 0.55 0.18 300;
+    --secondary-foreground: 0.99 0 0;
+    --muted: 0.20 0.05 320;
+    --muted-foreground: 0.65 0.05 320;
+    --accent: 0.82 0.18 80;
+    --accent-foreground: 0.10 0.02 80;
+    --destructive: 0.60 0.22 15;
+    --destructive-foreground: 0.99 0 0;
+    --border: 0.28 0.08 320;
+    --input: 0.22 0.06 320;
+    --ring: 0.68 0.22 0;
+    --chart-1: 0.68 0.22 0;
+    --chart-2: 0.55 0.18 300;
+    --chart-3: 0.82 0.18 80;
+    --chart-4: 0.70 0.20 340;
+    --chart-5: 0.65 0.15 280;
+    --sidebar: 0.10 0.03 320;
+    --sidebar-foreground: 0.97 0.01 60;
+    --sidebar-primary: 0.68 0.22 0;
+    --sidebar-primary-foreground: 0.99 0 0;
+    --sidebar-accent: 0.20 0.05 320;
+    --sidebar-accent-foreground: 0.97 0.01 60;
+    --sidebar-border: 0.28 0.08 320;
+    --sidebar-ring: 0.68 0.22 0;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html, body {
+    @apply bg-background text-foreground;
+    font-family: "Outfit", sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: "Playfair Display", serif;
+  }
+}
+
+/* ===== BIRTHDAY ANIMATIONS ===== */
+
+/* Twinkling stars */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Floating balloons */
+@keyframes floatBalloon {
+  0%, 100% { transform: translateY(0px) rotate(-2deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+}
+
+/* Confetti rain */
+@keyframes confettiFall {
+  0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+/* Glowing text pulse */
+@keyframes glowPulse {
+  0%, 100% {
+    text-shadow:
+      0 0 10px oklch(0.68 0.22 0 / 0.8),
+      0 0 20px oklch(0.68 0.22 0 / 0.6),
+      0 0 40px oklch(0.82 0.18 80 / 0.4),
+      0 0 80px oklch(0.55 0.18 300 / 0.3);
+  }
+  50% {
+    text-shadow:
+      0 0 20px oklch(0.68 0.22 0 / 1),
+      0 0 40px oklch(0.68 0.22 0 / 0.8),
+      0 0 80px oklch(0.82 0.18 80 / 0.7),
+      0 0 120px oklch(0.55 0.18 300 / 0.5);
+  }
+}
+
+/* Floating hearts */
+@keyframes floatHeart {
+  0% { transform: translateY(0) scale(1); opacity: 0.8; }
+  50% { transform: translateY(-30px) scale(1.1); opacity: 1; }
+  100% { transform: translateY(-60px) scale(0.8); opacity: 0; }
+}
+
+/* Heart bob */
+@keyframes heartBob {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-12px) scale(1.05); }
+}
+
+/* Page fade */
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Scale bounce in */
+@keyframes scaleBounceIn {
+  0% { transform: scale(0.3); opacity: 0; }
+  60% { transform: scale(1.1); opacity: 1; }
+  80% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+/* Petal fall */
+@keyframes petalFall {
+  0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(1080deg); opacity: 0.2; }
+}
+
+/* Button pulse */
+@keyframes buttonPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 20px oklch(0.68 0.22 0 / 0.5); }
+  50% { transform: scale(1.03); box-shadow: 0 0 40px oklch(0.68 0.22 0 / 0.8), 0 0 80px oklch(0.55 0.18 300 / 0.4); }
+}
+
+/* Nav dot glow */
+@keyframes dotGlow {
+  0%, 100% { box-shadow: 0 0 4px oklch(0.68 0.22 0 / 0.6); }
+  50% { box-shadow: 0 0 12px oklch(0.68 0.22 0 / 1); }
+}
+
+/* Typing cursor blink */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
